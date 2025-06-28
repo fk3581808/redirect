@@ -2,77 +2,59 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Continue</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Continue Page</title>
   <style>
     body {
       background-color: #111;
       color: white;
-      font-family: Arial, sans-serif;
       display: flex;
-      flex-direction: column;
-      align-items: center;
       justify-content: center;
+      align-items: center;
       height: 100vh;
-      margin: 0;
+      flex-direction: column;
+      font-family: Arial, sans-serif;
     }
 
-    .btn {
-      background-color: #ffcc00;
-      color: #000;
+    button {
       padding: 15px 30px;
-      font-size: 20px;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    .btn:hover {
-      background-color: #ffaa00;
-    }
-
-    .info {
-      margin-bottom: 20px;
       font-size: 18px;
+      cursor: pointer;
+      background-color: #ff6600;
+      border: none;
+      border-radius: 8px;
+      color: white;
     }
   </style>
 </head>
 <body>
 
-  <div class="info">Please click the button below to continue</div>
-  <button class="btn" onclick="triggerPop()">Click Here to Continue</button>
+  <h2>Click the button to continue</h2>
+  <button onclick="redirectUser()">Click Here to Continue</button>
 
+  <!-- PopCash Script -->
   <script type="text/javascript">
-    function triggerPop() {
-      var uid = '352537';
-      var wid = '723106';
-      var pop_tag = document.createElement('script');
-      pop_tag.src = '//cdn.popcash.net/show.js';
+    var uid = '352537';
+    var wid = '723106';
+    var pop_tag = document.createElement('script');
+    pop_tag.src = '//cdn.popcash.net/show.js';
+    document.body.appendChild(pop_tag);
+    pop_tag.onerror = function() {
+      pop_tag = document.createElement('script');
+      pop_tag.src = '//cdn2.popcash.net/show.js';
       document.body.appendChild(pop_tag);
-      pop_tag.onerror = function () {
-        pop_tag = document.createElement('script');
-        pop_tag.src = '//cdn2.popcash.net/show.js';
-        document.body.appendChild(pop_tag);
-      };
+    };
+  </script>
 
-      // Optional: redirect after ad fires
-      setTimeout(function () {
-        window.location.href = "https://example.com"; // <-- Replace with your final page
-      }, 1500);
-    }
-
-    // Disable Back Button
+  <!-- Prevent Back Button -->
+  <script>
     history.pushState(null, null, location.href);
     window.onpopstate = function () {
       history.go(1);
     };
 
-    // Disable right click, keyboard, F12, etc.
-    document.addEventListener('contextmenu', event => event.preventDefault());
-    document.onkeydown = function (e) {
-      return false;
-    };
+    function redirectUser() {
+      window.location.href = "https://example.com"; // Replace with your destination
+    }
   </script>
 
 </body>
