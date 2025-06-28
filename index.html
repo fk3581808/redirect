@@ -1,58 +1,56 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Continue</title>
+  <meta charset="UTF-8">
+  <title>Redirect Page</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     body {
-      background-color: #000;
-      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #121212;
+      color: white;
       font-family: Arial, sans-serif;
-      text-align: center;
-      padding-top: 100px;
+      margin: 0;
     }
     button {
+      background-color: #1e88e5;
+      color: white;
+      border: none;
       padding: 15px 30px;
       font-size: 18px;
-      background: #00ff88;
-      border: none;
-      border-radius: 10px;
+      border-radius: 8px;
       cursor: pointer;
-      color: #000;
+    }
+    button:hover {
+      background-color: #1565c0;
     }
   </style>
 </head>
 <body>
 
-  <h1>Click the button to continue</h1>
-  <button id="goBtn">Continue</button>
+  <button onclick="continueNow()">Click Here to Continue</button>
 
-  <!-- PopCash script -->
+  <script>
+    function continueNow() {
+      window.location.href = "https://your-landing-or-redirect-link.com"; // Replace this with your actual redirect
+    }
+  </script>
+
+  <!-- PopCash Ad Script -->
   <script type="text/javascript">
     var uid = '352537';
-    var wid = '723106';
+    var wid = '742291';
     var pop_tag = document.createElement('script');
     pop_tag.src = '//cdn.popcash.net/show.js';
     document.body.appendChild(pop_tag);
     pop_tag.onerror = function () {
-      var fallback = document.createElement('script');
-      fallback.src = '//cdn2.popcash.net/show.js';
-      document.body.appendChild(fallback);
+      pop_tag = document.createElement('script');
+      pop_tag.src = '//cdn2.popcash.net/show.js';
+      document.body.appendChild(pop_tag);
     };
-  </script>
-
-  <!-- New tab open + close current tab -->
-  <script>
-    document.getElementById("goBtn").addEventListener("click", function () {
-      // open target in new tab
-      var newTab = window.open("https://example.com", "_blank");
-
-      // give popunder a moment, then close this tab
-      setTimeout(function () {
-        window.open('', '_self'); // required for Chrome
-        window.close();
-      }, 100);
-    });
   </script>
 
 </body>
