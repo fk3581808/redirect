@@ -2,44 +2,73 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Redirect Page</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Continue to Your Content</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
     body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #1d1f21, #2b2d2f);
+      color: #ffffff;
+      height: 100vh;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
-      height: 100vh;
-      background-color: #121212;
-      color: white;
-      font-family: Arial, sans-serif;
-      margin: 0;
+      text-align: center;
+      padding: 20px;
     }
-    button {
-      background-color: #1e88e5;
-      color: white;
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 40px;
+      color: #ccc;
+    }
+    .pulse-button {
+      background: #00ff88;
+      color: #000;
+      padding: 20px 40px;
+      font-size: 22px;
+      font-weight: bold;
       border: none;
-      padding: 15px 30px;
-      font-size: 18px;
-      border-radius: 8px;
+      border-radius: 12px;
       cursor: pointer;
+      box-shadow: 0 0 20px #00ff88;
+      animation: pulse 1.5s infinite;
+      transition: transform 0.3s ease;
     }
-    button:hover {
-      background-color: #1565c0;
+    .pulse-button:hover {
+      background-color: #00cc6f;
+      transform: scale(1.1);
+    }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(0, 255, 136, 0.7); }
+      70% { box-shadow: 0 0 0 20px rgba(0, 255, 136, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(0, 255, 136, 0); }
     }
   </style>
 </head>
 <body>
 
-  <button onclick="continueNow()">Click Here to Continue</button>
+  <h1>Almost There...</h1>
+  <p>Your content is ready. Just one last step.</p>
+  <button class="pulse-button" onclick="redirectUser()">👉 Click Here to Continue 👈</button>
 
+  <!-- Redirect Logic -->
   <script>
-    function continueNow() {
-      window.location.href = "https://your-landing-or-redirect-link.com"; // Replace this with your actual redirect
+    function redirectUser() {
+      window.location.href = "https://your-final-destination.com"; // Replace this with your actual link
     }
   </script>
 
-  <!-- PopCash Ad Script -->
+  <!-- PopCash Ad Script (Do not modify) -->
   <script type="text/javascript">
     var uid = '352537';
     var wid = '742291';
