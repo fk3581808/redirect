@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Wait... Loading</title>
+  <title>Loading...</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
@@ -42,29 +42,25 @@
     };
   </script>
 
-  <!-- Disable Back Button & Refresh -->
+  <!-- Aggressive Back Button Block -->
   <script>
-    // Push multiple history states
-    history.pushState(null, null, location.href);
-    history.pushState(null, null, location.href);
-    history.pushState(null, null, location.href);
+    (function () {
+      // Push dummy state repeatedly
+      for (let i = 0; i < 10; i++) {
+        history.pushState({}, "", location.href);
+      }
 
-    // Trap back button
-    window.addEventListener('popstate', function (event) {
-      history.pushState(null, null, location.href);
-    });
-
-    // Optional: Prevent refresh or exit
-    window.addEventListener("beforeunload", function (e) {
-      e.preventDefault();
-      e.returnValue = '';
-    });
+      // Trap back button
+      window.onpopstate = function () {
+        history.pushState({}, "", location.href);
+      };
+    })();
   </script>
 
   <!-- Redirect on Button Click -->
   <script>
     document.getElementById("continueBtn").addEventListener("click", function () {
-      window.location.href = "https://example.com"; // <-- Change to your actual destination
+      window.location.href = "https://example.com"; // Change this to your target page
     });
   </script>
 
